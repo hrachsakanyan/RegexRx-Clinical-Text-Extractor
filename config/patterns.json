@@ -1,0 +1,156 @@
+{
+  "version": "1.0",
+  "description": "Config-driven regex patterns for RegexRx. Each field owns one or more named patterns; matches are normalised/validated by the validator named below (see src/validators.py). Higher priority wins when two fields match overlapping text.",
+  "fields": [
+    {
+      "name": "dates",
+      "description": "Calendar dates in ISO, US-numeric and written formats",
+      "priority": 70,
+      "validator": "date",
+      "patterns": [
+        {
+          "name": "iso",
+          "regex": "\\b(?P<y>(?:19|20)\\d{2})[-/](?P<m>1[0-2]|0?[1-9])[-/](?P<d>3[01]|[12]\\d|0?[1-9])\\b",
+          "flags": []
+        },
+        {
+          "name": "numeric_us",
+          "regex": "(?<![\\d/])(?P<m>1[0-2]|0?[1-9])[/-](?P<d>3[01]|[12]\\d|0?[1-9])[/-](?P<y>\\d{4}|\\d{2})(?![\\d/])",
+          "flags": []
+        },
+        {
+          "name": "day_month_year",
+          "regex": "\\b(?P<d>3[01]|[12]\\d|0?[1-9])(?:st|nd|rd|th)?[ -]+(?P<mon>jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\\.?,?[ -]+(?P<y>\\d{4})\\b",
+          "flags": ["IGNORECASE"]
+        },
+        {
+          "name": "month_day_year",
+          "regex": "\\b(?P<mon>jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\\.?[ ]+(?P<d>3[01]|[12]\\d|0?[1-9])(?:st|nd|rd|th)?,?[ ]+(?P<y>\\d{4})\\b",
+          "flags": ["IGNORECASE"]
+        }
+      ]
+    },
+    {
+      "name": "ages",
+      "description": "Patient age (with sex when written alongside it)",
+      "priority": 55,
+      "validator": "age",
+      "patterns": [
+        {
+          "name": "age_sex",
+          "regex": "\\b(?P<age>\\d{1,3})[ -]*(?:y\\.o\\.|y/o|yo|year[s]?[ -]?old)(?![a-z])(?:[ ,-]*(?P<sex>male|female|man|woman|M|F)(?![a-z]))?",
+          "flags": ["IGNORECASE"]
+        }
+      ]
+    },
+    {
+      "name": "blood_pressure",
+      "description": "Systolic/diastolic blood pressure readings",
+      "priority": 58,
+      "validator": "blood_pressure",
+      "patterns": [
+        {
+          "name": "systolic_diastolic",
+          "regex": "(?:(?P<label>blood\\s+pressure|BP)\\s*(?:was|is|of|reads?)?\\s*[:=]?\\s*)?(?<![\\d/.])(?P<sys>\\d{2,3})\\s*/\\s*(?P<dia>\\d{2,3})(?![\\d/])\\s*(?P<unit>mm\\s?Hg)?",
+          "flags": ["IGNORECASE"]
+        }
+      ]
+    },
+    {
+      "name": "vitals",
+      "description": "Heart rate, respiratory rate, temperature, SpO2, weight, height, BMI",
+      "priority": 60,
+      "validator": "vital",
+      "patterns": [
+        {
+          "name": "labelled_vital",
+          "regex": "\\b(?P<vital>heart\\s+rate|pulse|HR|resp(?:iratory)?\\s+rate|RR|temperature|temp|SpO2|O2\\s*sat(?:uration)?|SaO2|oxygen\\s+saturation|weight|wt|height|BMI)\\s*(?:was|is|of|at)?\\s*[:=]?\\s*(?P<value>\\d{1,3}(?:\\.\\d+)?)\\s*(?P<unit>bpm|°\\s?[FC]|degrees\\s+[FC]|[FC](?![a-z])|%|kg/m2|kg/m\\^2|kg|lbs|lb|cm)?",
+          "flags": ["IGNORECASE"]
+        }
+      ]
+    },
+    {
+      "name": "lab_values",
+      "description": "Named laboratory analytes with a numeric result and optional unit",
+      "priority": 65,
+      "validator": "lab",
+      "patterns": [
+        {
+          "name": "analyte_value",
+          "regex": "\\b(?P<analyte>hemoglobin\\s+a1c|hba1c|hb\\s?a1c|a1c|fasting\\s+glucose|glucose|BUN|creatinine|eGFR|Cr|sodium|potassium|chloride|bicarbonate|bicarb|CO2|calcium|magnesium|phosphorus|Phos|hemoglobin|Hgb|Hb|hematocrit|Hct|platelets|platelet|PLT|WBC|RBC|MCV|INR|PTT|PT|AST|ALT|alk\\s+phos|ALP|total\\s+bilirubin|bilirubin|albumin|LDL-C|LDL|HDL-C|HDL|triglycerides|total\\s+cholesterol|cholesterol|TSH|free\\s+T4|T4|CRP|ESR|troponin\\s+[IT]|troponin|NT-proBNP|BNP|lactate|ferritin|vitamin\\s+D|vit\\s+D|B12|folate|PSA|Na|K|Cl|Ca|Mg)\\b\\s*(?:level|lvl)?\\s*(?:was|is|of|at)?\\s*[:=]?\\s*(?P<value>\\d+(?:\\.\\d+)?)\\s*(?P<unit>%|mg/dL|g/dL|mmol/L|mEq/L|U/L|IU/L|ng/mL|ng/dL|pg/mL|uIU/mL|mIU/L|K/uL|10\\^3/uL|10\\^9/L|mL/min(?:/1\\.73\\s?m2)?|mm/hr|seconds|sec)?",
+          "flags": ["IGNORECASE"]
+        }
+      ]
+    },
+    {
+      "name": "medications",
+      "description": "Drug name + dose amount + unit, with optional route and frequency",
+      "priority": 50,
+      "validator": "medication",
+      "patterns": [
+        {
+          "name": "drug_dose",
+          "regex": "(?<![A-Za-z-])(?:(?P<drug>(?!(?:the|and|for|with|after|before|then|than|plus|per|from|into|onto|about|also|gave|give|given|take|takes|taking|took|drank|drink|ate|start|started|stop|stopped|increase|increased|decrease|decreased|reduce|reduced|receive|received|receives|continue|continued|prescribed|patient|improved|worsened|added|dose|dosed|total|each|every|next|last|past|over|under|still|used|using|another|extra|sent|home|one|two|three|four|five|day|days|week|weeks|month|months|year|years|note|plan|rate|bolus|drip|gtt|was|were|are|has|had|his|her|she|they|now)[ ])[A-Za-z][A-Za-z-]{2,}(?:[ ][A-Za-z][A-Za-z-]{2,})?)[ ]+)?(?<![\\d/.])(?P<amount>\\d+(?:\\.\\d+)?)\\s*(?P<unit>mcg|mg|mEq|g|kg|mL|L|IU|units|unit|tablets|tablet|tabs|tab|capsules|capsule|caps|puffs|puff|drops|drop|patches|patch)(?![a-z])(?!\\s*/)(?:[ ,]*(?P<route>PO|by\\s+mouth|IV|IM|SubQ|SQ|SC|SL|PR|topical|inhaled|intranasal))?(?:[ ,]*(?P<freq>q\\.?\\s?\\d+\\s*(?:hours|hrs|hr|h|minutes|mins|min)|q\\.?\\s?(?:daily|day|d)|every\\s+\\d+\\s+(?:hours|minutes)|b\\.i\\.d\\.|BID|t\\.i\\.d\\.|TID|QID|QHS|QD|PRN|p\\.r\\.n\\.|once\\s+daily|twice\\s+daily|three\\s+times\\s+(?:a\\s+)?day|daily|nightly|weekly|at\\s+bedtime))?",
+          "flags": ["IGNORECASE"]
+        },
+        {
+          "name": "dose_of_drug",
+          "regex": "(?<![\\d/.])(?P<amount>\\d+(?:\\.\\d+)?)\\s*(?P<unit>mcg|mg|mEq|g|mL|L|IU|units|unit)(?![a-z])(?!\\s*/)\\s+of\\s+(?P<drug>[A-Za-z][A-Za-z-]{2,}(?:[ ][A-Za-z][A-Za-z-]{2,})?)",
+          "flags": ["IGNORECASE"]
+        }
+      ]
+    },
+    {
+      "name": "icd_codes",
+      "description": "ICD-10-CM style diagnosis codes (letter + 2 chars, optional .subcode)",
+      "priority": 85,
+      "validator": "icd",
+      "patterns": [
+        {
+          "name": "icd10",
+          "regex": "(?:(?P<label>(?i:ICD-?10(?:-CM)?(?:\\s+code)?|dx\\s*code|diagnosis\\s*code))\\s*[:=#]?\\s*)?\\b(?P<code>[A-TV-Z][0-9][0-9A-Z](?:\\.[0-9A-Z]{1,4})?)\\b",
+          "flags": []
+        }
+      ]
+    },
+    {
+      "name": "mrns",
+      "description": "Medical record numbers introduced by an explicit label",
+      "priority": 90,
+      "validator": "mrn",
+      "patterns": [
+        {
+          "name": "labelled_mrn",
+          "regex": "\\b(?:MRN|M\\.R\\.N\\.|medical\\s+record\\s+(?:number|no\\.?|#)|record\\s*#)\\s*[:#=]?\\s*(?P<mrn>[A-Z]{0,3}-?\\d{5,10})\\b",
+          "flags": ["IGNORECASE"]
+        }
+      ]
+    },
+    {
+      "name": "phones",
+      "description": "North-American style phone numbers with optional country code and extension",
+      "priority": 80,
+      "validator": "phone",
+      "patterns": [
+        {
+          "name": "na_phone",
+          "regex": "(?<![\\d-])(?:(?P<country>\\+?1)[ .-]*)?(?:\\((?P<area_paren>\\d{3})\\)|(?P<area>\\d{3}))[ .-]*(?P<prefix>\\d{3})[ .-]*(?P<line>\\d{4})(?![\\d-])(?:\\s*(?:x|ext\\.?|extension)\\s*(?P<ext>\\d{1,5}))?",
+          "flags": ["IGNORECASE"]
+        }
+      ]
+    },
+    {
+      "name": "emails",
+      "description": "E-mail addresses",
+      "priority": 95,
+      "validator": "email",
+      "patterns": [
+        {
+          "name": "email",
+          "regex": "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\\.[A-Za-z0-9-]+)*\\.[A-Za-z]{2,}\\b",
+          "flags": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+EDGE-CASE NOTE (synthetic) -- deliberately awkward text used to exercise the validators
+
+Record #: 90210771 . Note written 2024-02-30 (typo: that date does not exist and is dropped).
+Also seen 13/25/2024 -- month 13 is impossible, so no match there either.
+
+Vitals were charted sloppily:  BP 138 / 86mmHg, HR:78bpm, temp 98.6F, spo2 = 97 %.
+Someone wrote the ratio 3/4 in the I&O section and 1/2 tablet in the med list -- neither is
+a blood pressure. Room 12/25 is a room number, not a reading.
+
+Doses appear in several shapes:
+  metformin 500mg bid           <- no space before the unit
+  TAKE 2 TABLETS PO Q8H         <- all caps, no drug name
+  gave 0.4 mg of nitroglycerin  <- dose written before the drug
+  vancomycin 1.5 g IV q12h
+  insulin glargine 24 units subq at bedtime
+  patient drank 500 mL of water <- "water" is not really a drug, but it is a dose
+
+Lab-looking text that must NOT become a dose: glucose 180 mg/dL, creatinine 1.2 mg/dL.
+Nonsense values are rejected by range checks: Na 5000 mmol/L, HR 900 bpm, K 99.
+
+Codes: vitamin B12 was 410 pg/mL -- B12 looks like an ICD code but is not labelled, so it is
+skipped. A labelled one is kept: ICD-10 I10. Dotted codes stand alone fine: M54.5, S72.001A.
+
+Contacts: fax 555 000 1234 (invalid exchange 000), good number (555) 662-9911,
+weird email not..valid@@example.com, valid one: intake_desk@clinic-north.example.
+
+Ages: 8 y/o boy, 45-year-old, 102 yo woman, 200 y/o (rejected), and the phrase "5 yo dog".

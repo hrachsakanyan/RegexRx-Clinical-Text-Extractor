@@ -1,0 +1,33 @@
+DISCHARGE SUMMARY (synthetic teaching example)
+==============================================
+
+Medical Record Number: 4471028
+Admitted: 15 Jan 2024        Discharged: 22 Jan 2024
+
+HOSPITAL COURSE
+A 34-year-old woman was admitted with community-acquired pneumonia (ICD-10 code J18.9).
+On admission her temperature was 38.9 C, heart rate 118, respiratory rate 26, and
+oxygen saturation 89% on room air. Blood pressure of 104/62 improved after 2 L of
+crystalloid. WBC was 18.4 K/uL with a hemoglobin of 11.2 g/dL and platelets 388 K/uL.
+CRP 142 mg/L on 1/15/2024, down to 28 by 01/20/2024.
+
+She received ceftriaxone 1 g IV daily and azithromycin 500 mg IV daily for 3 days,
+then transitioned to amoxicillin-clavulanate 875 mg PO BID. Oxygen was weaned by
+hospital day 4; SpO2 96% on room air at discharge. Repeat BP 118/74 mmHg, HR 82.
+
+DISCHARGE MEDICATIONS
+  1. Amoxicillin-clavulanate 875 mg PO BID x 5 days
+  2. Albuterol 2 puffs inhaled q6h PRN
+  3. Acetaminophen 650 mg PO q6h PRN fever
+  4. Prednisone 40 mg PO daily x 3 days
+  5. Potassium chloride 20 mEq PO daily until 01/29/2024
+
+DISCHARGE LABS (01/22/2024)
+  Na 138 | K 4.0 | Cl 101 | CO2 24 | BUN 12 | creatinine 0.8 | glucose 96
+  WBC 8.1 K/uL, Hgb 11.8 g/dL, Hct 35 %, PLT 310 K/uL
+  albumin 3.4 g/dL, AST 28 U/L, ALT 31 U/L, INR 1.1
+
+FOLLOW UP
+  PCP visit 29 January 2024, chest x-ray in 6 weeks.
+  Questions: care.coordination@northlake-hospital.example or (555) 774-1900 x145.
+  After hours nurse line: 555.774.1911

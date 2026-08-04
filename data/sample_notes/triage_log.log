@@ -1,0 +1,9 @@
+2024-04-02 08:12:04 INFO  triage: pt A (MRN: 55210034) 71 y/o male, BP 152/94 mmHg, HR 88 bpm, temp 37.2 C
+2024-04-02 08:19:41 INFO  triage: pt B (MRN: 55210035) 29 yo female, BP 108/70, HR 66, SpO2 99%
+2024-04-02 08:41:16 WARN  triage: pt C (MRN: 55210036) 84-year-old woman, BP 88/54 mmHg -- hypotensive, MD notified
+2024-04-02 09:02:55 INFO  labs: pt A glucose 188 mg/dL, K 5.1 mEq/L, creatinine 1.6 mg/dL
+2024-04-02 09:03:02 INFO  labs: pt C hgb 8.9 g/dL, WBC 14.2 K/uL, lactate 3.4 mmol/L
+2024-04-02 09:31:10 INFO  meds: pt A given amlodipine 5 mg PO daily; pt C normal saline 1000 mL IV
+2024-04-02 09:44:37 INFO  dx: pt A ICD-10 I10; pt B J45.909; pt C D50.9
+2024-04-02 10:05:00 INFO  callback: pt B contacted at (555) 903-2210, confirmation sent to b.patient@mail.example
+2024-04-02 10:22:18 ERROR export: record for pt C failed validation, retry scheduled 04/02/2024 11:00

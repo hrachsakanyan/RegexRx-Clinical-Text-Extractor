@@ -1,0 +1,37 @@
+OUTPATIENT PROGRESS NOTE  --  Riverbend Family Medicine
+(synthetic record, generated for testing -- no real patient data)
+
+Patient:  Doe, Jane          MRN: 00841239
+DOB 04/17/1971              Visit date: 2024-03-14
+Referring: Dr. A. Patel  |  ph (555) 208-4417 ext 22  |  a.patel@riverbend-clinic.example
+
+53 y/o female here for f/u of type 2 diabetes and hypertension. Last seen 11/28/2023.
+Reports better adherence since we simplified the regimen, still skips the evening dose
+"maybe twice a week".
+
+VITALS:  BP 138/86 mmHg   HR 78 bpm   RR 16   Temp 98.4 F   SpO2 97%
+         wt 91.2 kg    ht 165 cm     BMI 33.5
+
+LABS (drawn 03/09/24):
+    HbA1c        7.8 %          (was 8.6% on 2023-09-05)
+    fasting glucose 154 mg/dL
+    Na 139 mmol/L   K 4.2 mmol/L   Cl 103 mmol/L   CO2 25 mmol/L
+    creatinine   1.05 mg/dL      eGFR 68 mL/min/1.73m2
+    LDL 118 mg/dL, HDL 44 mg/dL, triglycerides 210 mg/dL
+    TSH 2.4 uIU/mL
+
+MEDS:
+  - Metformin 1000 mg PO BID
+  - Lisinopril 20 mg PO daily
+  - Atorvastatin 40 mg PO nightly
+  - Semaglutide 0.5 mg SubQ weekly
+  - aspirin 81 mg daily
+  Gave 500 mg of acetaminophen in clinic for headache.
+
+ASSESSMENT / PLAN
+  ICD-10: E11.9 (type 2 DM without complications), I10, E78.5
+  1. Increase Metformin to 1000 mg BID -- done above.
+  2. Repeat A1c in 3 months, recheck BP at 2 week nurse visit.
+  3. Referral to nutrition; pt to call 555-208-4400 to schedule.
+
+Next appointment: April 22, 2024.  Results portal: jane.doe+labs@example.org

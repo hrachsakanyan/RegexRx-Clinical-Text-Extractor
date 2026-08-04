@@ -1,0 +1,3 @@
+# RegexRx runs on the Python standard library alone (re, json, csv, argparse).
+# The only dependency is the test runner.
+pytest>=7.4
