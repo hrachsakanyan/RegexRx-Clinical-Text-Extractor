@@ -17,7 +17,7 @@
 
 ---
 
-## 🧠 What is RegexRx?
+## 🧠 What is RegexRx? 
 
 RegexRx transforms **unstructured clinical notes** into structured, machine-readable records.
 
