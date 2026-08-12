@@ -198,7 +198,7 @@ The extractor also tracks **rejected candidates**, allowing you to see when a re
 
 ---
 
-## 🧩 Project Structure
+## 🧩 Project Structure 
 
 ```text
 regexrx/
