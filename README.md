@@ -98,7 +98,7 @@ Expected result:
 
 ## 🚀 Usage
 
-### Extract bundled sample notes
+### Extract bundled sample notes 
 
 ```bash
 python src/main.py
